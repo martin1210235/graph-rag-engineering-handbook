@@ -1,0 +1,88 @@
+{
+  "source": {
+    "name": "NASA Systems Engineering Handbook, Rev 2",
+    "url": "https://ntrs.nasa.gov/citations/20170001761",
+    "attribution": "Hirshorn, S. R., Voss, L., and Bromley, L. NASA/SP-2016-6105 Rev 2, 2016. Public Use Permitted."
+  },
+  "concepts": [
+    {"id": "verification", "name": "Product verification", "aliases": ["verification", "verify", "product verification"], "description": "Checks a realized product against its requirements or specifications."},
+    {"id": "validation", "name": "Product validation", "aliases": ["validation", "validate", "product validation"], "description": "Checks that the product meets stakeholder expectations in its intended environment."},
+    {"id": "requirements", "name": "Requirements and specifications", "aliases": ["requirements", "requirement", "specification", "specifications", "shall statement"], "description": "Documented conditions against which product verification provides evidence."},
+    {"id": "stakeholder_expectations", "name": "Stakeholder expectations", "aliases": ["stakeholder expectations", "customer expectations", "user expectations"], "description": "Expectations used to assess whether the realized product is suitable for its users."},
+    {"id": "intended_environment", "name": "Intended environment", "aliases": ["intended environment", "environment of use", "operational environment"], "description": "The environment in which users are expected to use the system."},
+    {"id": "end_to_end_testing", "name": "End-to-end testing", "aliases": ["end-to-end testing", "end to end testing", "end-to-end test"], "description": "Testing across elements and interfaces to demonstrate system-level compatibility and functionality."},
+    {"id": "interface_compatibility", "name": "Interface compatibility", "aliases": ["interface compatibility", "interfaces"], "description": "Compatibility among system elements and external enabling systems."},
+    {"id": "technical_risk_management", "name": "Technical risk management", "aliases": ["technical risk management", "risk management"], "description": "Identifies, assesses, mitigates, and monitors technical risks."},
+    {"id": "technical_risk", "name": "Technical risk", "aliases": ["technical risk", "risks", "risk"], "description": "Potential future performance shortfall related to safety, technical performance, cost, or schedule."},
+    {"id": "risk_mitigation", "name": "Risk mitigation", "aliases": ["risk mitigation", "mitigation", "mitigation action"], "description": "Actions selected to reduce or manage a risk and its consequences."}
+  ],
+  "relations": [
+    {"source": "verification", "type": "CHECKS_AGAINST", "target": "requirements"},
+    {"source": "validation", "type": "COMPARES_WITH", "target": "stakeholder_expectations"},
+    {"source": "validation", "type": "ASSESSES_IN", "target": "intended_environment"},
+    {"source": "end_to_end_testing", "type": "DEMONSTRATES", "target": "interface_compatibility"},
+    {"source": "end_to_end_testing", "type": "MAY_SUPPORT", "target": "verification"},
+    {"source": "end_to_end_testing", "type": "MAY_SUPPORT", "target": "validation"},
+    {"source": "technical_risk_management", "type": "IDENTIFIES_AND_MONITORS", "target": "technical_risk"},
+    {"source": "technical_risk_management", "type": "SELECTS", "target": "risk_mitigation"},
+    {"source": "risk_mitigation", "type": "ADDRESSES", "target": "technical_risk"}
+  ],
+  "passages": [
+    {
+      "id": "verification_definition",
+      "title": "Product verification",
+      "page": 103,
+      "text": "Product verification proves that an end product (whether built, coded, bought, or reused) for any element within the system structure conforms to its requirements or specifications.",
+      "concept_ids": ["verification", "requirements"]
+    },
+    {
+      "id": "verification_question",
+      "title": "Verification and validation objectives",
+      "page": 103,
+      "text": "The Product Verification Process answers the critical question, “Was the end product realized right?”",
+      "concept_ids": ["verification"]
+    },
+    {
+      "id": "validation_definition",
+      "title": "Product validation",
+      "page": 116,
+      "text": "Validation proves whether “the right product was done.” Validation is performed for the benefit of the customers and users to ensure that the system functions in the expected manner when placed in the intended environment. This is achieved by examining the products of the system at every level of the product structure and comparing them to the stakeholder expectations for that level.",
+      "concept_ids": ["validation", "stakeholder_expectations", "intended_environment"]
+    },
+    {
+      "id": "end_to_end_testing",
+      "title": "End-to-end testing",
+      "page": 111,
+      "text": "The purpose of end-to-end testing is to demonstrate interface compatibility and desired total functionality among different elements of a mission system, between the system of interest and external enabling systems, and within a system as a whole.",
+      "concept_ids": ["end_to_end_testing", "interface_compatibility"]
+    },
+    {
+      "id": "end_to_end_scope",
+      "title": "End-to-end testing scope",
+      "page": 111,
+      "text": "End-to-end tests may be performed as part of investigative engineering tests, verification testing, or validation testing.",
+      "concept_ids": ["end_to_end_testing", "verification", "validation"]
+    },
+    {
+      "id": "technical_risk_definition",
+      "title": "Technical risk",
+      "page": 160,
+      "text": "Risk is the potential for performance shortfalls, which may be realized in the future, with respect to achieving explicitly established and stated performance requirements. The shortfalls may relate to safety, technical performance, cost, or schedule.",
+      "concept_ids": ["technical_risk_management", "technical_risk", "requirements"]
+    },
+    {
+      "id": "risk_identification",
+      "title": "Identify technical risks",
+      "page": 164,
+      "text": "On a continuing basis, the technical team will identify technical risks including their source, analyze the potential consequence and likelihood of the risks occurring, and prepare clear risk statements for entry into the program/project risk management system.",
+      "concept_ids": ["technical_risk_management", "technical_risk"]
+    },
+    {
+      "id": "risk_mitigation_process",
+      "title": "Risk mitigation and monitoring",
+      "page": 169,
+      "text": "This includes selecting the risks that will be mitigated and more closely monitored, identifying the risk level or threshold that will trigger a risk mitigation action plan.",
+      "concept_ids": ["technical_risk_management", "technical_risk", "risk_mitigation"]
+    }
+  ]
+}

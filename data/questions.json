@@ -1,0 +1,5 @@
+[
+  {"question": "How do verification and validation differ?", "expected_passage_ids": ["verification_definition", "verification_question", "validation_definition"]},
+  {"question": "What does end-to-end testing demonstrate?", "expected_passage_ids": ["end_to_end_testing", "end_to_end_scope"]},
+  {"question": "How does the team identify and manage technical risks?", "expected_passage_ids": ["technical_risk_definition", "risk_identification", "risk_mitigation_process"]}
+]
