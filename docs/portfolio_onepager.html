@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GraphRAG for Engineering Handbooks</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #20313b; font: 10.5pt/1.38 Arial, sans-serif; background: #fff; }
+    .page { width: 210mm; height: 297mm; padding: 12mm 16mm 10mm; }
+    header { padding: 9mm 12mm; color: #fff; background: #202b34; border-radius: 4mm; }
+    .eyebrow { margin: 0 0 5mm; color: #8bd1ca; font-size: 9pt; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+    h1 { margin: 0; font-size: 27pt; line-height: 1.12; }
+    .subtitle { margin: 4mm 0 0; color: #d9e3e7; font-size: 13pt; }
+    .meta { display: flex; gap: 3mm; margin-top: 8mm; flex-wrap: wrap; }
+    .tag { padding: 1.5mm 3mm; border: 1px solid #657781; border-radius: 20px; color: #f1f6f6; font-size: 9pt; }
+    h2 { margin: 6mm 0 2mm; color: #176c70; font-size: 12.5pt; }
+    p { margin: 0 0 3mm; }
+    .lead { margin-top: 6mm; font-size: 11.5pt; }
+    .flow { display: flex; align-items: stretch; gap: 2mm; margin: 4mm 0 2mm; }
+    .step { flex: 1; min-height: 18mm; padding: 2mm; display: flex; align-items: center; justify-content: center; text-align: center; border: 1px solid #bfd5d3; border-radius: 2mm; background: #f2f8f7; font-size: 9pt; font-weight: 700; }
+    .arrow { align-self: center; color: #278987; font-size: 15pt; }
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+    ul { margin: 2mm 0 0; padding-left: 5mm; }
+    li { margin: 0 0 2mm; }
+    .note { padding: 4mm 5mm; background: #f4f6f7; border-left: 3px solid #278987; font-size: 9.5pt; }
+    .source { margin-top: 4mm; padding-top: 3mm; border-top: 1px solid #d5dfe1; color: #53636b; font-size: 9pt; }
+    a { color: #126b70; font-weight: 700; text-decoration: none; }
+    footer { margin-top: 6mm; padding-top: 3mm; border-top: 1px solid #d5dfe1; color: #53636b; font-size: 9pt; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p class="eyebrow">Martín Herranz · Independent portfolio project</p>
+      <h1>GraphRAG for<br>Engineering Handbooks</h1>
+      <p class="subtitle">Evidence-first answers with Neo4j, BM25 and optional local generation</p>
+      <div class="meta">
+        <span class="tag">Python</span><span class="tag">Neo4j</span>
+        <span class="tag">Cypher</span><span class="tag">Docker</span><span class="tag">Ollama</span>
+      </div>
+    </header>
+
+    <p class="lead">I built a small GraphRAG prototype over selected passages from NASA's <i>Systems Engineering Handbook</i>. It shows how a knowledge graph can expand retrieval and keep answers tied to source pages.</p>
+
+    <h2>How a question is answered</h2>
+    <div class="flow">
+      <div class="step">Question<br>concept matching</div><div class="arrow">›</div>
+      <div class="step">Neo4j<br>one-hop expansion</div><div class="arrow">›</div>
+      <div class="step">BM25<br>evidence ranking</div><div class="arrow">›</div>
+      <div class="step">Page-cited<br>answer</div>
+    </div>
+
+    <div class="columns">
+      <section>
+        <h2>What I implemented</h2>
+        <ul>
+          <li>A property graph of engineering concepts and typed relationships.</li>
+          <li>Evidence passages linked to concepts and printed handbook pages.</li>
+          <li>Graph-expanded retrieval followed by BM25 ranking.</li>
+          <li>Optional Ollama generation with instructions to answer from retrieved evidence.</li>
+          <li>A small, hand-labelled question set for retrieval metrics.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Design choices</h2>
+        <ul>
+          <li>I curated the sample graph by hand so each node and relationship can be inspected.</li>
+          <li>The sample is small and focused on source traceability.</li>
+          <li>The code does not claim automatic PDF extraction or vector search.</li>
+          <li>The demo can return evidence without loading a language model.</li>
+        </ul>
+      </section>
+    </div>
+
+    <h2>Source and scope</h2>
+    <p class="note">The sample uses short excerpts from NASA/SP-2016-6105 Rev 2. NASA's Technical Reports Server marks the report “Public Use Permitted.” The handbook PDF is not bundled. This is a standalone demo and does not contain code or data from my thesis project.</p>
+
+    <footer>
+      <p><b>Code and setup:</b> <a href="https://github.com/martin1210235/graph-rag-engineering-handbook">GitHub repository</a></p>
+      <p><b>Source:</b> Hirshorn, Voss and Bromley, NASA Systems Engineering Handbook, 2016. <a href="https://ntrs.nasa.gov/citations/20170001761">NASA Technical Reports Server</a>.</p>
+    </footer>
+  </main>
+</body>
+</html>
